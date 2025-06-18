@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prediction Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #a8e063, #56ab2f); /* Green gradient */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .info {
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ffff66;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 30px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(to right, #56ab2f, #a8e063);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(88, 239, 125, 0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="glass-box">
+    <h2>🌿 Prediction Summary</h2>
+
+    <div class="info">🌡️ Temperature: {{ Temperature }} °C</div>
+    <div class="info">💧 Humidity: {{ RH }}%</div>
+    <div class="info">🌬️ Wind Speed: {{ Ws }} km/h</div>
+    <div class="info">🌧️ Rain: {{ Rain }} mm</div>
+    <div class="info">🔥 FFMC: {{ FFMC }}</div>
+    <div class="info">🔥 DMC: {{ DMC }}</div>
+    <div class="info">🔥 ISI: {{ ISI }}</div>
+    <div class="info">📍 Region: {% if Region == '0' %}Bejaia{% else %}Sidi-Bel Abbes{% endif %}</div>
+    <div class="info">🔥 Class: {% if Classes == '0' %}Not Fire{% else %}Fire{% endif %}</div>
+
+    <div class="result">
+      Predicted FWI: {{ result }}
+    </div>
+
+    <form action="{{ url_for('home') }}">
+      <button type="submit">🔁 Try Again</button>
+    </form>
+  </div>
+</body>
+</html>
