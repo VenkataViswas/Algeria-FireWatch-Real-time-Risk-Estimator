@@ -70,7 +70,8 @@ A machine learning model (Ridge) powered by scikit-learn is wrapped in a Flask w
 algerian_forest_fire_predictor/
 ├── app.py                           # Flask application entrypoint
 ├── models/
-│   └── elasticnetcv_model.pkl       # Serialized ElasticNetCV model
+│   └── ridge.pkl       # Serialized Ridge Linear Regression  model
+    └── Scalare.pkl     # Serialized Stadard Scalar Model
 ├── static/                          # CSS/JS files
 ├── templates/                       # HTML templates (index, result views)
 ├── notebooks/
@@ -116,7 +117,6 @@ This application is deployed using **AWS EC2**.
 
 - Ensure input values are within training data ranges  
 - Select the correct region (Bejaia / Sidi Bel Abbes)  
-- Predictions are more reliable when inputs reflect similar time/day as training data  
 
 ---
 
